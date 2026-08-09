@@ -75,3 +75,11 @@ Open your browser and navigate to `http://127.0.0.1:8000` to access the applicat
 2. **Bit Formatting**: Encrypted text bytes are converted into a binary bit array with header length metadata.
 3. **Neural Encoding**: The `encoder.h5` Keras model embeds the binary bit payload into the cover image array.
 4. **Neural Decoding**: The `decoder.h5` model extracts the raw bit array from the stego image, reads payload length header, and decrypts the text back to plain text.
+
+---
+
+## Contributors
+
+- [**tee-uwu**](https://github.com/tee-uwu)
+- [**Ayman Nasir (Ayman392)**](https://github.com/Ayman392)
+- [**Ayubanas**](https://github.com/Ayubanas)
