@@ -29,7 +29,7 @@ class StegoController extends Controller
         }
 
         // Path to Python executable & engine script
-        $pythonPath = 'python'; // Or full path e.g. 'C:\Python310\python.exe'
+        $pythonPath = env('PYTHON_PATH', 'python');
         $scriptPath = base_path('../inference/stego_engine.py');
         $inferenceDir = base_path('../inference');
 
@@ -72,7 +72,7 @@ class StegoController extends Controller
         $stegoPath = $request->file('stego_image')->store('uploads', 'public');
         $fullStegoPath = storage_path('app/public/' . $stegoPath);
 
-        $pythonPath = 'python';
+        $pythonPath = env('PYTHON_PATH', 'python');
         $scriptPath = base_path('../inference/stego_engine.py');
         $inferenceDir = base_path('../inference');
 
