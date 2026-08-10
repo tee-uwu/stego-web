@@ -43,9 +43,23 @@
                 <button type="submit" class="w-full py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-medium rounded transition">Encode Message</button>
 
                 @if(session('stego_image'))
-                    <div class="p-2.5 bg-emerald-50 border border-emerald-100 rounded flex items-center justify-between">
-                        <img src="{{ asset(session('stego_image')) }}" class="w-10 h-10 object-cover rounded border border-emerald-200">
-                        <a href="{{ asset(session('stego_image')) }}" download class="px-2.5 py-1 bg-emerald-700 text-white text-xs rounded">Download</a>
+                    <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg flex flex-col gap-2.5 mt-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold text-emerald-900">Encoded Stego Image:</span>
+                            <span class="text-[10px] text-emerald-600 font-mono">{{ session('stego_filename') ?? basename(session('stego_image')) }}</span>
+                        </div>
+                        <div class="w-full flex justify-center bg-gray-900/5 p-2 rounded border border-emerald-100/80">
+                            <img src="{{ asset(session('stego_image')) }}" alt="Stego Preview" class="max-h-48 rounded object-contain shadow-xs border border-white">
+                        </div>
+                        <div class="flex gap-2 w-full pt-1">
+                            <a href="{{ route('stego.download', session('stego_filename') ?? basename(session('stego_image'))) }}" class="flex-1 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-medium rounded text-center transition flex items-center justify-center gap-1.5 shadow-xs">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                Download Image
+                            </a>
+                            <a href="{{ asset(session('stego_image')) }}" target="_blank" class="px-3 py-1.5 border border-emerald-300 text-emerald-700 hover:bg-emerald-100/60 text-xs font-medium rounded text-center transition">
+                                Open Preview
+                            </a>
+                        </div>
                     </div>
                 @endif
             </form>

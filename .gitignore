@@ -24,6 +24,7 @@ Thumbs.db
 ~/
 
 # Laravel Storage & Logs
+web-app/public/storage
 web-app/storage/app/public/uploads/*
 web-app/storage/app/public/output/*
 web-app/storage/logs/*

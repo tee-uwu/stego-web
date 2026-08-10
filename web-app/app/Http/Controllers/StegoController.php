@@ -58,6 +58,7 @@ class StegoController extends Controller
 
         return back()->with([
             'stego_image' => 'storage/output/' . $outputFileName,
+            'stego_filename' => $outputFileName,
             'active_tab' => 'encrypt'
         ]);
     }
@@ -101,6 +102,20 @@ class StegoController extends Controller
         return back()->with([
             'recovered_message' => $output,
             'active_tab' => 'decrypt'
+        ]);
+    }
+
+    public function download($filename)
+    {
+        $filename = basename($filename);
+        $path = storage_path('app/public/output/' . $filename);
+
+        if (!file_exists($path)) {
+            abort(404, 'File not found.');
+        }
+
+        return response()->download($path, $filename, [
+            'Content-Type' => 'image/png',
         ]);
     }
 }

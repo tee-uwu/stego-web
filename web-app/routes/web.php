@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 Route::post('/encode', [StegoController::class, 'encode'])->name('stego.encode');
 Route::post('/decode', [StegoController::class, 'decode'])->name('stego.decode');
+Route::get('/download/{filename}', [StegoController::class, 'download'])->name('stego.download');
